@@ -1,0 +1,29 @@
+<h1>Indexpage</h1>
+<h2> Articles Table </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>S.No.</th>
+      <th>Article</th>
+      <th>Username</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+	  <% @articles.each do |i|%>
+    <tr>
+  	<!-- <a href= "/articles/<%= i.id%>"> <%= i.title %> -->	
+  	<%#= link_to i.title, article_show_path(id: i.id)%> <!--when there is no resources add in routes -->
+    <td><%= @articles.index(i) + 1 %></td>
+    <td><%= link_to i.title, i %></td><!-- after adding resources to routes --> 
+  	<td><%= link_to i.user && i.user.username, i.user %></td><!-- after adding resources to routes --> 
+  	<td><%= link_to 'Edit', edit_article_path(i)%></td>
+  	<td><%= link_to 'Delete', article_path(i), method: :delete, data: { confirm: "Are you sure?" } %></td>
+    </tr>
+	  <% end %>
+  </tbody>
+</table>
+
+ 
